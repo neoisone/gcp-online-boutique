@@ -12,7 +12,7 @@ steps:
       - build
       - -t
       - $_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO/frontend:$SHORT_SHA
-      - /tmp/microservices-demo/src/frontend
+      - services/frontend
 
   # Push image
   - name: gcr.io/cloud-builders/docker
