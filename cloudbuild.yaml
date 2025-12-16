@@ -1,0 +1,42 @@
+substitutions:
+  _REGION: us-central1
+  _PROJECT_ID: metal-arc-481413-g9
+  _REPO: ob-docker
+  _CLUSTER: ob-gke
+  _ZONE: us-central1-f
+
+steps:
+  # Build frontend image
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - build
+      - -t
+      - $_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO/frontend:$SHORT_SHA
+      - /tmp/microservices-demo/src/frontend
+
+  # Push image
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - push
+      - $_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO/frontend:$SHORT_SHA
+
+  # Get cluster credentials
+  - name: gcr.io/cloud-builders/gcloud
+    args:
+      - container
+      - clusters
+      - get-credentials
+      - $_CLUSTER
+      - --zone=$_ZONE
+      - --project=$_PROJECT_ID
+
+  # Deploy updated image
+  - name: gcr.io/cloud-builders/kubectl
+    args:
+      - set
+      - image
+      - deployment/frontend
+      - server=$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO/frontend:$SHORT_SHA
+    env:
+      - CLOUDSDK_COMPUTE_ZONE=$_ZONE
+      - CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER
