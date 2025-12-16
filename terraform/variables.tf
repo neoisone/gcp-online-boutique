@@ -6,7 +6,12 @@ variable "project_id" {
 variable "region" {
   description = "GCP region"
   type        = string
-  default     = "europe-west1"
+  default     = "us-central"
+}
+
+variable "zone" {
+  description = "GCP zone for zonal GKE cluster"
+  type        = string
 }
 
 variable "env" {

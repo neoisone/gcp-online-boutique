@@ -2,7 +2,12 @@
 .terraform/
 *.tfstate
 *.tfstate.*
+crash.log
+
+# Terraform variable files
 *.tfvars
 
-# Environment / secrets
-.env
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
