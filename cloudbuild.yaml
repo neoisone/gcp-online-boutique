@@ -30,16 +30,16 @@ steps:
       - --zone=$_ZONE
       - --project=$_PROJECT_ID
 
-  # Deploy updated image
-  - name: gcr.io/cloud-builders/kubectl
-    args:
-      - set
-      - image
-      - deployment/frontend
-      - server=$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO/frontend:$SHORT_SHA
-    env:
-      - CLOUDSDK_COMPUTE_ZONE=$_ZONE
-      - CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER
+  # # Deploy updated image
+  # - name: gcr.io/cloud-builders/kubectl
+  #   args:
+  #     - set
+  #     - image
+  #     - deployment/frontend
+  #     - server=$_REGION-docker.pkg.dev/$_PROJECT_ID/$_REPO/frontend:$SHORT_SHA
+  #   env:
+  #     - CLOUDSDK_COMPUTE_ZONE=$_ZONE
+  #     - CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER
 
 
 options:
