@@ -40,3 +40,7 @@ steps:
     env:
       - CLOUDSDK_COMPUTE_ZONE=$_ZONE
       - CLOUDSDK_CONTAINER_CLUSTER=$_CLUSTER
+
+
+options:
+  logging: CLOUD_LOGGING_ONLY
