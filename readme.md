@@ -162,7 +162,8 @@ Every commit to ^BRANCH will:
 By default, deployments may be scaled to zero.
 Start the full application with:
 
-```kubectl get deployments -o name | xargs -I {} kubectl scale {} --replicas=1
+```
+kubectl get deployments -o name | xargs -I {} kubectl scale {} --replicas=1
 
 ```
 
