@@ -37,7 +37,7 @@ Upstream Services: Google Online Boutique (microservices-demo)
 This project is built on top of Google’s official Online Boutique reference application:
 
 ``` 
-👉 git clone https://github.com/GoogleCloudPlatform/microservices-demo
+git clone https://github.com/GoogleCloudPlatform/microservices-demo
 ```
 
 - That repository contains:
